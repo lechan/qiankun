@@ -21,4 +21,8 @@ registerMicroApps([
     activeRule: getActiveRule('#/app-vue')
   }
 ])
-start()
+start({
+  sandbox: {
+    strictStyleIsolation: true
+  }
+})
