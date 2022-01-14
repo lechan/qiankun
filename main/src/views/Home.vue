@@ -19,14 +19,14 @@ export default {
   },
   mounted () {
     this.initToken()
-    console.log(this.$actions)
-    this.$actions.onGlobalStateChange((state, prev) => {
+    console.log(this.$qkActions)
+    this.$qkActions.onGlobalStateChange((state, prev) => {
       this.user = state.user
     })
   },
   methods: {
     getMainState () {
-      this.$actions.setGlobalState({ user: this.user })
+      this.$qkActions.setGlobalState({ user: this.user })
     },
     initToken () {
       this.$store.commit('setToken', 'abc')

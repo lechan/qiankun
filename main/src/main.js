@@ -10,7 +10,7 @@ const initialState = {
   user: {} // 用户信息
 }
 const actions = initGlobalState(initialState)
-Vue.prototype.$actions = actions
+Vue.prototype.$qkActions = actions
 
 new Vue({
   router,
