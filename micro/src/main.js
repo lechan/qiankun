@@ -28,8 +28,11 @@ if (!window.__POWERED_BY_QIANKUN__) {
   render()
 }
 
-export async function bootstrap () {
-  console.log('[vue] vue app bootstraped')
+export async function bootstrap (props = {}) {
+  // console.log('[vue] vue app bootstraped')
+  // 将主应用的store和utils挂载到实例上
+  Vue.prototype.$mainStore = props.store
+  Vue.prototype.$mainUtils = props.utils
 }
 export async function mount (props) {
   // console.log('[vue] props from main framework', props)
