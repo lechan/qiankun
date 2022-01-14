@@ -16,7 +16,6 @@ function render (props = {}) {
     // mode: 'history',
     appRoutes
   })
-
   instance = new Vue({
     router,
     store,
@@ -33,7 +32,9 @@ export async function bootstrap () {
   console.log('[vue] vue app bootstraped')
 }
 export async function mount (props) {
-  console.log('[vue] props from main framework', props)
+  // console.log('[vue] props from main framework', props)
+  Vue.prototype.$onGlobalStateChange = props.onGlobalStateChange
+  Vue.prototype.$setGlobalState = props.setGlobalState
   render(props)
 }
 export async function unmount () {

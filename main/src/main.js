@@ -2,9 +2,12 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { registerMicroApps, start } from 'qiankun'
+import { registerMicroApps, start, initGlobalState } from 'qiankun'
 
 Vue.config.productionTip = false
+
+const actions = initGlobalState()
+Vue.prototype.$actions = actions
 
 new Vue({
   router,
