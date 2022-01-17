@@ -22,14 +22,14 @@ export default {
   },
   computed: {
     mainState () {
-      return this.$mainStore.state
+      return this.$mainStore ? this.$mainStore.state : {}
     },
     mainUtils () {
-      return this.$mainUtils
+      return this.$mainUtils || {}
     }
   },
   mounted () {
-    this.$onGlobalStateChange((state, prev) => {
+    this.$onGlobalStateChange && this.$onGlobalStateChange((state, prev) => {
       console.log('微应用传值', 'current：', state, 'prev：', prev)
       this.mainAppData = state
     })
@@ -38,13 +38,15 @@ export default {
   },
   methods: {
     sendToMain () {
-      const { user } = this.mainAppData
-      this.$setGlobalState({
-        user: {
-          ...user,
-          name: this.microInput
-        }
-      })
+      if (this.mainAppData) {
+        const { user } = this.mainAppData
+        this.$setGlobalState && this.$setGlobalState({
+          user: {
+            ...user,
+            name: this.microInput
+          }
+        })
+      }
     }
   }
 }
