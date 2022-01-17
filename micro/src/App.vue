@@ -30,7 +30,7 @@ export default {
   },
   mounted () {
     this.$onGlobalStateChange((state, prev) => {
-      console.log('微应用传值', state, prev)
+      console.log('微应用传值', 'current：', state, 'prev：', prev)
       this.mainAppData = state
     })
     console.log('mainState', this.mainState)
